@@ -24,7 +24,9 @@ All headers are in ./Program/include
 
 ### Program Structure
 - Class Diagram
+
 ![alt text](https://github.com/PAPADOXIE/OOP-Project/blob/main/Data/img/Class%20Diagram.png?raw=true)
 
 - User Interface
+
 ![alt text](https://github.com/PAPADOXIE/OOP-Project/blob/main/Data/img/User.png?raw=true)
