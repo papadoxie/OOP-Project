@@ -7,15 +7,15 @@ Simulates the spreading of virus in a given population according to infection ra
 
 ### Compilation
 In the ./Program folder
-```bash
-    sudo chmod +x compile.sh
-    compile.sh
+```sh
+sudo chmod +x compile.sh
+compile.sh
 ```
 
 ### Running
 Binary will be generated in ./Program/bin
-```bash
-    ./VirusSimulator
+```sh
+./VirusSimulator
 ```
 
 ### Folder Structure
