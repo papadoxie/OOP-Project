@@ -12,15 +12,16 @@ In the ./Program folder
 ```
 
 ### Running
-Binary will be generated in ./Program/bin
+Binary will be generated in ./Program/bin/
 ```sh
     ./VirusSimulator
 ```
 
 ### Folder Structure
-All source code is in ./Program/source
-All headers are in ./Program/include
-./Data folder contains UML Diagrams, Input format and sample outputs
+- All source code is in ./Program/source/
+- All headers are in ./Program/include/
+- ./Data folder contains UML Diagrams, Input format and sample outputs
+- Output File with simulation results will be in ./Program/bin/
 
 ### Program Structure
 - Class Diagram
