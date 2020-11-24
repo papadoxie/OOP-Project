@@ -8,7 +8,7 @@ Simulates the spreading of virus in a given population according to infection ra
 In the ./Program folder
 ```sh
     sudo chmod +x compile.sh
-    compile.sh
+    ./compile.sh
 ```
 
 ### Running
