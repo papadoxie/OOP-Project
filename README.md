@@ -21,3 +21,10 @@ Binary will be generated in ./Program/bin
 All source code is in ./Program/source
 All headers are in ./Program/include
 ./Data folder contains UML Diagrams, Input format and sample outputs
+
+### Program Structure
+- Class Diagram
+![alt text](https://github.com/PAPADOXIE/OOP-Project/blob/main/Data/img/Class%20Diagram.png?raw=true)
+
+- User Interface
+![alt text](https://github.com/PAPADOXIE/OOP-Project/blob/main/Data/img/User.png?raw=true)
