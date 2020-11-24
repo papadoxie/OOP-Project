@@ -1,6 +1,8 @@
 #!/bin/bash
 
-g++ ./source/main.cpp -o ./bin/VirusSimulator \
+g++ ./source/main.cpp \
+-Wall -lSDL2 -fdiagnostics-color=always \
+-o ./bin/VirusSimulator \
 ./source/City.cpp \
 ./source/Clean.cpp \
 ./source/FileHandler.cpp \
