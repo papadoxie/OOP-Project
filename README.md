@@ -1,5 +1,4 @@
 # OOP-Project BCSF19A515
-Final Project for OOP Course
 
 
 ## Virus Simulator
@@ -8,14 +7,14 @@ Simulates the spreading of virus in a given population according to infection ra
 ### Compilation
 In the ./Program folder
 ```sh
-sudo chmod +x compile.sh
-compile.sh
+    sudo chmod +x compile.sh
+    compile.sh
 ```
 
 ### Running
 Binary will be generated in ./Program/bin
 ```sh
-./VirusSimulator
+    ./VirusSimulator
 ```
 
 ### Folder Structure
