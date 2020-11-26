@@ -5,6 +5,11 @@
 Simulates the spreading of virus in a given population according to infection rate
 
 ### Compilation
+Install Dependencies
+```sh
+    sudo apt install libsdl2-dev
+```
+
 In the ./Program folder
 ```sh
     sudo chmod +x compile.sh
