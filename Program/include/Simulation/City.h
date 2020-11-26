@@ -1,3 +1,5 @@
+#pragma once
+
 #include "HumanList.h"
 
 class City

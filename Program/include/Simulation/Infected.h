@@ -1,3 +1,5 @@
+#pragma once
+
 class Infected
 {
 public:

@@ -1,3 +1,5 @@
+#pragma once
+
 class Clean
 {
 public:

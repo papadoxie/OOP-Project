@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Infected.h"
 #include "Clean.h"
 

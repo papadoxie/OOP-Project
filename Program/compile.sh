@@ -1,14 +1,19 @@
 #!/bin/bash
 
-g++ ./source/main.cpp \
+g++ ./source/Simulator/Simulator.cpp \
 -Wall -lSDL2 -fdiagnostics-color=always \
 -o ./bin/VirusSimulator \
-./source/City.cpp \
-./source/Clean.cpp \
-./source/FileHandler.cpp \
-./source/Human.cpp \
-./source/HumanList.cpp \
-./source/Infected.cpp \
-./source/Randomizer.cpp \
-./source/Screen.cpp \
-./source/Time.cpp
+./source/Simulator/Simulator_OnCleanup.cpp \
+./source/Simulator/Simulator_OnEvent.cpp \
+./source/Simulator/Simulator_OnInit.cpp \
+./source/Simulator/Simulator_OnLoop.cpp \
+./source/Simulator/Simulator_OnRender.cpp \
+./source/Simulator/Screen.cpp \
+./source/Simulation/City.cpp \
+./source/Simulation/Clean.cpp \
+./source/Simulation/FileHandler.cpp \
+./source/Simulation/Human.cpp \
+./source/Simulation/HumanList.cpp \
+./source/Simulation/Infected.cpp \
+./source/Simulation/Randomizer.cpp \
+./source/Simulation/Time.cpp

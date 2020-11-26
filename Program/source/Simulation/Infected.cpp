@@ -1,1 +1,1 @@
-#include "../include/Simulation/Infected.h"
+#include "../../include/Simulation/Infected.h"
