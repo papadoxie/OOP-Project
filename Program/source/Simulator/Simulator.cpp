@@ -1,4 +1,5 @@
 #include "../../include/Simulator/Simulator.h"
+#include "../../include/Simulation/Simulation.h"
 
 Simulator::Simulator() : WIDTH(640), HEIGHT(480)
 {   
@@ -16,24 +17,25 @@ int Simulator::onExecute()
 
     SDL_Event Event;
 
-    while (Running)
+    while (Running) //Loop Until Exit Call
     {
-        while (SDL_PollEvent(&Event))
+        while (SDL_PollEvent(&Event)) //Handle Events
         {
             onEvent(&Event);
         }
-        onLoop();
-        onRender();
+        onLoop(); //Execute On Each Loop
+        onRender(); //Send To Render
     }
 
-    onCleanup();
+    onCleanup(); //Perform Cleanup After Exit Call
 
     return 0;
 }
 
 int main(int argc, char *argv[]) //Main Function
 {
-    Simulator virusSimulator;
+    Simulator virusSimulator; //Create instance of Simulator
+    Simulation virusSimulation; //Create instance of Simulation
 
-    return virusSimulator.onExecute();
+    return virusSimulator.onExecute(); //Run the simulation
 }
