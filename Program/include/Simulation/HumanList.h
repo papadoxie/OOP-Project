@@ -10,6 +10,6 @@ public:
     void operator+(const Human &human);
 
 private:
-    Human *h_list;
+    Human **h_list;
     int l_size;
 };

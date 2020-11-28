@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <stdint.h>
+#include "../../include/Simulation/Simulation.h"
 #include "../../include/Simulator/Colors.h"
 
 class Simulator
@@ -18,11 +19,12 @@ public:
 private:
     bool Running;
 
+    Simulation *virusSimulation;
     SDL_Window *Screen;
     SDL_Surface *screenSurface;
 
-    const uint32_t WIDTH; //Screen width
-    const uint32_t HEIGHT; //Screen height
+    uint32_t WIDTH; //Screen width
+    uint32_t HEIGHT; //Screen height
 
     uint32_t *pixbuf; //Pixel buffer
     Colors colors; 

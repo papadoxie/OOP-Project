@@ -1,8 +1,13 @@
 #pragma once
-#include <SDL2/SDL.h>
+
+#include <stdint.h>
+#include "City.h"
 
 class Simulation
 {
 public:
-    Simulation();
+    Simulation(uint32_t width, uint32_t height);
+
+private:
+    City *city;
 };

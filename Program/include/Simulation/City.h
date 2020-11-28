@@ -1,17 +1,26 @@
 #pragma once
 
+#include <stdint.h>
 #include "HumanList.h"
 
 class City
 {
 public:
-    City();
-    void populate();
-    void randomBuildings();
+    /**
+        Create a new City and fill it with buildings and people.
+        @param width width of city
+        @param height height of city
+    */
+    City(uint32_t width, uint32_t height);
+
+    void populate(uint32_t numP);
+    void randomBuildings(uint32_t numB);
+    void setDimensions(uint32_t width, uint32_t height);
     void update();
     void draw();
 
 private:
     bool **walls;
-    int height, width;
+    uint32_t width, height;
+    HumanList *h_list;
 };

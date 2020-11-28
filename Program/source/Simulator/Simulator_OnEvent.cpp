@@ -19,6 +19,8 @@ void Simulator::onEvent(SDL_Event *Event)
             }
             else
             {
+                WIDTH = screenSurface->w;
+                HEIGHT = screenSurface->h;
                 pixbuf = (uint32_t *)screenSurface->pixels;
             }
         }
