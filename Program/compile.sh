@@ -8,7 +8,7 @@ g++ ./source/Simulator/Simulator.cpp \
 ./source/Simulator/Simulator_OnInit.cpp \
 ./source/Simulator/Simulator_OnLoop.cpp \
 ./source/Simulator/Simulator_OnRender.cpp \
-./source/Simulator/Screen.cpp \
+./source/Simulation/Simulation.cpp \
 ./source/Simulation/City.cpp \
 ./source/Simulation/Clean.cpp \
 ./source/Simulation/FileHandler.cpp \
