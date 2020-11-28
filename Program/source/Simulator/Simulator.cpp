@@ -1,7 +1,7 @@
 #include "../../include/Simulator/Simulator.h"
 
-Simulator::Simulator()
-{
+Simulator::Simulator() : WIDTH(640), HEIGHT(480)
+{   
     Screen = NULL;
     screenSurface = NULL;
     Running = true;
@@ -31,7 +31,7 @@ int Simulator::onExecute()
     return 0;
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) //Main Function
 {
     Simulator virusSimulator;
 

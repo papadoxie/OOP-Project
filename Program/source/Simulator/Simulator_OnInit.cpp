@@ -9,19 +9,24 @@ bool Simulator::onInit()
         return false;
     }
 
-    if (SDL_CreateWindow("Virus Simulator",
+    if ((Screen = SDL_CreateWindow("Virus Simulator",
                          SDL_WINDOWPOS_UNDEFINED,
                          SDL_WINDOWPOS_UNDEFINED,
-                         600, 600,
-                         SDL_WINDOW_SHOWN) == NULL)
+                         WIDTH, HEIGHT,
+                         SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE)) == NULL)
     {
         std::cout << "Error creating window: " << SDL_GetError() << std::endl;
         return false;
     }
 
-    screenSurface = SDL_GetWindowSurface(Screen);
+    if ((screenSurface = SDL_GetWindowSurface(Screen)) == NULL)
+    {
+        std::cout << "Error Getting Surface: " << SDL_GetError() << std::endl;
+        return false;
+    }
 
-    SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0x1A, 0x1A, 0x1A));
+    pixbuf = (uint32_t*)(screenSurface->pixels);
+    std::cout << SDL_GetPixelFormatName(screenSurface->format->format) << std::endl;
 
     return true;
 }
