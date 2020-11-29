@@ -9,7 +9,7 @@ bool Simulator::onInit()
     std::cout << "RAM: " << SDL_GetSystemRAM() << " MB" << "\n\n";
 
     //Initialize SDL
-    if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
         std::cout << "ERROR INITIALIZING SDL: " << SDL_GetError() << "\n";
         return false;
@@ -21,7 +21,7 @@ bool Simulator::onInit()
                          SDL_WINDOWPOS_UNDEFINED,
                          SDL_WINDOWPOS_UNDEFINED,
                          WIDTH, HEIGHT,
-                         SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE)) == NULL)
+                         SDL_WINDOW_SHOWN)) == NULL)
     {
         std::cout << "ERROR CREATING WINDOW: " << SDL_GetError() << "\n";
         return false;

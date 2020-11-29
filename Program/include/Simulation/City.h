@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 #include "HumanList.h"
+#include "Random.h"
 
 class City
 {
@@ -13,14 +14,20 @@ public:
     */
     City(uint32_t width, uint32_t height);
 
-    void populate(uint32_t numP);
-    void randomBuildings(uint32_t numB);
     void setDimensions(uint32_t width, uint32_t height);
     void update();
-    void draw();
+    ~City(); //Destructor
 
-private:
-    bool **walls;
-    uint32_t width, height;
+private:  
     HumanList *h_list;
+    Random random;
+    void initWalls();// Make wall array
+    void populate(uint32_t numP); //Add humans to city
+    bool isLocOpen(uint32_t x, uint32_t y); //Are given coordinates free
+
+protected:
+    uint32_t width, height;
+    bool **walls; //Array of buildings
+    void randomBuildings(uint32_t numB);
+    
 };

@@ -1,14 +1,17 @@
 #pragma once
 
-#include <time.h>
+#include <chrono>
+#include <stdint.h>
 
 class Time
 {
 public:
-    void startTime();
+    Time();
     void stopTime();
-    double getCurTime();
+    uint32_t getCurTime();
+    uint32_t getPrevTime();
 
 private:
-    double start;
+    std::chrono::_V2::system_clock::time_point start;
+    std::chrono::_V2::system_clock::time_point prev;
 };

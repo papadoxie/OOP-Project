@@ -2,13 +2,13 @@
 #include "../../include/Simulation/Simulation.h"
 
 Simulator::Simulator()
-{   
+{
     WIDTH = 640;
     HEIGHT = 480;
     Screen = NULL;
     screenSurface = NULL;
+    virusSimulation = NULL;
     Running = true;
-    virusSimulation = new Simulation(WIDTH, HEIGHT);
 }
 
 int Simulator::onExecute()
@@ -18,7 +18,9 @@ int Simulator::onExecute()
         return -1;
     }
 
-    SDL_Event Event;
+    //Initialize the Simulation
+    virusSimulation = new Simulation(screenSurface->w, screenSurface->h);
+    SDL_Event Event; //Create Event Handler
 
     while (Running) //Loop Until Exit Call
     {
@@ -26,7 +28,7 @@ int Simulator::onExecute()
         {
             onEvent(&Event);
         }
-        onLoop(); //Execute On Each Loop
+        onLoop();   //Execute On Each Loop
         onRender(); //Send To Render
     }
 

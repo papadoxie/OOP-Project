@@ -1,7 +1,7 @@
 #!/bin/bash
 
 g++ ./source/Simulator/Simulator.cpp \
--Wall -lSDL2 -fdiagnostics-color=always \
+-Wall -lSDL2 -lncurses -fdiagnostics-color=always \
 -o ./bin/VirusSimulator \
 ./source/Simulator/Simulator_OnCleanup.cpp \
 ./source/Simulator/Simulator_OnEvent.cpp \
@@ -15,5 +15,5 @@ g++ ./source/Simulator/Simulator.cpp \
 ./source/Simulation/Human.cpp \
 ./source/Simulation/HumanList.cpp \
 ./source/Simulation/Infected.cpp \
-./source/Simulation/Randomizer.cpp \
+./source/Simulation/Random.cpp \
 ./source/Simulation/Time.cpp
