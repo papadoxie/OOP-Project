@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <stdint.h>
+#include "../Simulation/FileHandler.h"
 #include "../../include/Simulation/Simulation.h"
 #include "../../include/Simulator/Colors.h"
 
@@ -12,16 +13,19 @@ public:
 
     bool onInit();                  //Initializes the window and surfaces
     void onEvent(SDL_Event *Event); //Handles events
-    void onLoop();
-    void onRender();
-    void onCleanup();
+    void onLoop();                  //Stuff to do on each loop
+    void onRender();                //Render results of loop
+    void onCleanup();               //Cleanup routine
 
 private:
-    bool Running;
+    bool Running;    //Is program running
+    bool simRunning; //Is a simulation running
 
-    Simulation *virusSimulation;
-    SDL_Window *Screen;
-    SDL_Surface *screenSurface;
+    Simulation *virusSimulation; //Instance of a simulation
+    SDL_Window *Screen;          //Output window
+    SDL_Surface *screenSurface;  //Surface to draw on on screen
+
+    void menu(); //Menu
 
     uint32_t WIDTH;  //Screen width
     uint32_t HEIGHT; //Screen height

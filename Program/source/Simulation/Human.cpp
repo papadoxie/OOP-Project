@@ -1,52 +1,41 @@
 #include "../../include/Simulation/Human.h"
 
-Human::Human()
+uint32_t Human::numHumans = 0;
+uint32_t Human::numInfected = 0;
+
+Human::Human(uint32_t px, uint32_t py, Random *random)
 {
+    this->px = px;
+    this->py = py;
+    this->random = random;
     this->setRandDirection(); //Set random direction
+    numHumans++;
+    infected = false;
 }
 
 void Human::setRandDirection()
 {
-    double_t chance = random.randDouble(1);
+    uint32_t chance = random->randInt(100);
 
-    if (chance <= 0.1) //10% chance of changing direction
+    if (chance <= 5) //10% chance of changing direction
     {
-        uint32_t randint = random.randInt(4); //Randomly select direction
+        uint32_t randint = random->randInt(4); //Randomly select direction
 
         switch (randint)
         {
-        case 0:
+        case 1:
             direction = 'U'; //Up
             break;
-        case 1:
+        case 2:
             direction = 'L'; //Left
             break;
-        case 2:
+        case 3:
             direction = 'R'; //Right
             break;
-        case 3:
+        case 4:
             direction = 'D'; //Down
             break;
         }
-    }
-}
-
-void Human::oppDirection()
-{
-    switch (direction)
-    {
-    case 'U': //If Up
-        direction = 'D';
-        break;
-    case 'D': //If Down
-        direction = 'U';
-        break;
-    case 'L': //If Left
-        direction = 'R';
-        break;
-    case 'R': //If Right
-        direction = 'L';
-        break;
     }
 }
 
@@ -70,6 +59,31 @@ void Human::move()
     setRandDirection();
 }
 
+bool Human::isInfected() const
+{
+    return infected;
+}
+
+void Human::infect()
+{   
+    if(infected){
+        return;
+    }
+
+    uint32_t chance = random->randInt(100);
+    if (chance <= 5) //5% chance to infect
+    {
+        infected = true;
+        numInfected++;
+    }
+}
+
+void Human::patientZero()
+{
+    infected = true;
+    numInfected++;
+}
+
 uint32_t Human::getx() const
 {
     return px;
@@ -80,6 +94,24 @@ uint32_t Human::gety() const
     return py;
 }
 
-char32_t Human::getDirection() const {
+double_t Human::getInfectedPc() const
+{
+    return ((double_t)numInfected / (double_t)numHumans) * 100;
+}
+
+uint32_t Human::getNumHumans() const
+{
+    return numHumans;
+}
+
+char32_t Human::getDirection() const
+{
     return direction;
+}
+
+void Human::kill(){
+    if(infected){
+        numInfected--;
+    }
+    numHumans--;
 }

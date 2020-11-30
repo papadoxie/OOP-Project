@@ -2,5 +2,6 @@
 #include <iostream>
 
 void Simulator::onLoop(){
-    virusSimulation->simTime();
+    SDL_FillRect(screenSurface, NULL, colors.BLACK);
+    virusSimulation->update(pixbuf);
 }

@@ -9,30 +9,45 @@ Simulator::Simulator()
     screenSurface = NULL;
     virusSimulation = NULL;
     Running = true;
+    simRunning = false;
 }
 
 int Simulator::onExecute()
 {
-    if (onInit() == false)
-    {
-        return -1;
-    }
 
-    //Initialize the Simulation
-    virusSimulation = new Simulation(screenSurface->w, screenSurface->h);
     SDL_Event Event; //Create Event Handler
 
-    while (Running) //Loop Until Exit Call
+    do
     {
         while (SDL_PollEvent(&Event)) //Handle Events
         {
             onEvent(&Event);
         }
-        onLoop();   //Execute On Each Loop
-        onRender(); //Send To Render
-    }
 
-    onCleanup(); //Perform Cleanup After Exit Call
+        menu(); //Call the menu
+
+        if (simRunning)
+        {
+            //Initialize the Simulation
+            if (onInit() == false)
+            {
+                return -1;
+            }
+            virusSimulation = new Simulation(screenSurface->w, screenSurface->h);
+        }
+
+        while (simRunning) //Loop Until Exit Call
+        {
+            while (SDL_PollEvent(&Event)) //Handle Events
+            {
+                onEvent(&Event);
+            }
+            onLoop();   //Execute On Each Loop
+            onRender(); //Send To Render
+        }
+        onCleanup(); //Perform Cleanup After Exit Call
+
+    } while (Running);
 
     return 0;
 }

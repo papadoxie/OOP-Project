@@ -7,8 +7,8 @@ class Random
 {
 public:
     Random();
-    uint32_t randInt(uint32_t upperBound);
-    double_t randDouble(uint32_t upperBound);
+    uint32_t randInt(uint32_t upperBound) const;
+    double_t randDouble(uint32_t upperBound) const;
 
 private:
 };
