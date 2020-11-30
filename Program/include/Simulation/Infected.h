@@ -1,11 +1,16 @@
 #pragma once
 
-class Infected
+#include "Human.h"
+#include "../Simulator/Colors.h"
+
+class Infected : Human
 {
 public:
+    Infected();
     bool isAdjecent();
     void setInfected();
 
-protected:
-    static int numInfected; //Number of Infected
+private:
+    Colors *colors;
+    const uint32_t color;
 };

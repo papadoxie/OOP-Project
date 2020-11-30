@@ -1,11 +1,17 @@
 #pragma once
 
-class Clean
+#include "Human.h"
+#include "../Simulator/Colors.h"
+
+class Clean : Human
 {
 public:
+    Clean();
     void setCareful();
+    bool getAdjacent();
 
-protected:
-    static int numClean; //Number of non Infected
+private:
     bool isCareful;      //Lower chance of infection
+    Colors *colors;
+    const uint32_t color;
 };

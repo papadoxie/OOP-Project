@@ -6,6 +6,7 @@ City::City(uint32_t width, uint32_t height)
     //Set dimensions of the City
     setDimensions(width, height);
     initWalls();
+    initHumans();
 }
 
 void City::setDimensions(uint32_t width, uint32_t height)
@@ -61,6 +62,20 @@ void City::randomBuildings(uint32_t numB)
     }
 }
 
+void City::initHumans(){
+    c_list = new Clean*[width];
+    i_list = new Infected*[width];
+
+    for(uint32_t i = 0; i < width; i++){
+        c_list[i] = new Clean[height];
+        i_list[i] = new Infected[height]
+    }
+}
+
+void City::populate(uint32_t numP){
+
+}
+
 City::~City()
 {
     for (uint32_t i = 0; i < width; i++)
@@ -68,5 +83,4 @@ City::~City()
         delete[] walls[i];
     }
     delete[] walls;
-    delete h_list;
 }

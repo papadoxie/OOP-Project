@@ -1,18 +1,23 @@
 #pragma once
 
+#include <stdint.h>
+#include "Random.h"
 #include "Infected.h"
 #include "Clean.h"
 
-class Human : Infected, Clean //Inherits Infected and Clean
+class Human
 {
 public:
     Human(); //Constructor
-    char getDirection();
-    void setDirection();
-    bool getAdjacent();
+    uint32_t getx() const;           //Return x position
+    uint32_t gety() const;           //Return y position
+    void setRandDirection();         //Set a random direction
+    void oppDirection();             //Set direction to opposite
+    void move();                     //Increment position according to direction
 
-private:
-    int px, py;     //Position of the Human
-    char direction; //Direction the Human will go in
-    bool infected;  //Is human infected or not
+protected:
+    uint32_t px, py;               //Position of the Human
+    char32_t direction;            //Direction the Human will go in
+    Random random;                 //Random generator
+    char32_t getDirection() const; //Return direction
 };

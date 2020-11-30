@@ -1,7 +1,9 @@
 #pragma once
 
 #include <stdint.h>
-#include "HumanList.h"
+#include <vector>
+#include "Clean.h"
+#include "Infected.h"
 #include "Random.h"
 
 class City
@@ -19,15 +21,18 @@ public:
     ~City(); //Destructor
 
 private:  
-    HumanList *h_list;
     Random random;
     void initWalls();// Make wall array
+    void initHumans(); //Make Human arrays
     void populate(uint32_t numP); //Add humans to city
     bool isLocOpen(uint32_t x, uint32_t y); //Are given coordinates free
 
 protected:
     uint32_t width, height;
     bool **walls; //Array of buildings
-    void randomBuildings(uint32_t numB);
+    Clean **c_list;
+    Infected **i_list;
+    void randomBuildings(uint32_t numB); //Randomly generate buildings on the screen
+
     
 };

@@ -4,7 +4,7 @@
 Simulation::Simulation(uint32_t width, uint32_t height) : City(width, height)
 {
     std::cout << "TIME: " << (uint32_t)time.getCurTime() << "s\n";
-    randomBuildings(20);
+    randomBuildings(25);
 }
 
 void Simulation::draw(uint32_t *pixels)

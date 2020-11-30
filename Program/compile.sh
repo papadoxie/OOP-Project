@@ -13,7 +13,6 @@ g++ ./source/Simulator/Simulator.cpp \
 ./source/Simulation/Clean.cpp \
 ./source/Simulation/FileHandler.cpp \
 ./source/Simulation/Human.cpp \
-./source/Simulation/HumanList.cpp \
 ./source/Simulation/Infected.cpp \
 ./source/Simulation/Random.cpp \
 ./source/Simulation/Time.cpp
