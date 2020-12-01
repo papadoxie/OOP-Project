@@ -2,8 +2,8 @@
 
 #include <stdint.h>
 #include <fstream>
-#include "City.h"
-#include "Time.h"
+#include "./City/City.h"
+#include "../Helpers/Time.h"
 #include "../Simulator/Colors.h"
 
 class Simulation : private City

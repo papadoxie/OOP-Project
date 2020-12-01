@@ -2,9 +2,8 @@
 
 #include <stdint.h>
 #include <vector>
-#include <memory>
-#include "Human.h"
-#include "Random.h"
+#include "../Human/Human.h"
+#include "../../Helpers/Random.h"
 
 class City
 {

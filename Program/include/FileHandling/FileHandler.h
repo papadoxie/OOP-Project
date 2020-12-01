@@ -1,7 +1,7 @@
 #pragma once
 
 #include <fstream>
-#include "Simulation.h"
+#include "../Simulation/Simulation.h"
 
 class FileHandler
 {

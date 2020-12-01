@@ -1,5 +1,5 @@
 #include "../../include/Simulation/Simulation.h"
-#include "../../include/Simulation/FileHandler.h"
+#include "../../include/FileHandling/FileHandler.h"
 #include <iostream>
 
 Simulation::Simulation(uint32_t width, uint32_t height) : City(width, height)

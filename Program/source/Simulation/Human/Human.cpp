@@ -1,4 +1,4 @@
-#include "../../include/Simulation/Human.h"
+#include "../../../include/Simulation/Human/Human.h"
 
 uint32_t Human::numHumans = 0;
 uint32_t Human::numInfected = 0;

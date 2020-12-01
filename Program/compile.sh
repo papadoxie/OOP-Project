@@ -10,8 +10,8 @@ g++ ./source/Simulator/Simulator.cpp \
 ./source/Simulator/Simulator_OnLoop.cpp \
 ./source/Simulator/Simulator_OnRender.cpp \
 ./source/Simulation/Simulation.cpp \
-./source/Simulation/City.cpp \
-./source/Simulation/FileHandler.cpp \
-./source/Simulation/Human.cpp \
-./source/Simulation/Random.cpp \
-./source/Simulation/Time.cpp
+./source/Simulation/City/City.cpp \
+./source/FileHandling/FileHandler.cpp \
+./source/Simulation/Human/Human.cpp \
+./source/Helpers/Random.cpp \
+./source/Helpers/Time.cpp

@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <stdint.h>
-#include "../Simulation/FileHandler.h"
+#include "../FileHandling/FileHandler.h"
 #include "../../include/Simulation/Simulation.h"
 #include "../../include/Simulator/Colors.h"
 
