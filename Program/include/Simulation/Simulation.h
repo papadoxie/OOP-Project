@@ -6,7 +6,7 @@
 #include "Time.h"
 #include "../Simulator/Colors.h"
 
-class Simulation : City
+class Simulation : private City
 {
 public:
     Simulation(uint32_t width, uint32_t height);

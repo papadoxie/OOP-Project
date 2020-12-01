@@ -12,7 +12,7 @@ void Simulator::menu()
               << "3. GET A SIMULATION RECORD BY INDEX\n"
               << "4. REMOVE A SIMULATION RECORD BY INDEX\n"
               << "5. EXIT\n\n"
-              << ">>";
+              << ">> ";
     
     std::cin >> input;
 

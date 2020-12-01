@@ -13,4 +13,5 @@ public:
 
 private:
     Simulation *sim;
+    std::fstream file;
 };

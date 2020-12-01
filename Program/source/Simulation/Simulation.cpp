@@ -91,7 +91,7 @@ void Simulation::simTime()
 }
 
 void Simulation::end(){
-    std::cout << "SIMULATION RAN FOR: " << time.getCurTime() << "s\n"
+    std::cout << "\nSIMULATION RAN FOR: " << time.getCurTime() << "s\n"
               << "TOTAL HUMANS: " << humans.at(0).getNumHumans() << "\n"
               << "INFECTED: " << humans.at(0).getInfectedPc() << "%\n";
 
