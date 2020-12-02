@@ -3,10 +3,11 @@
 uint32_t Human::numHumans = 0;
 uint32_t Human::numInfected = 0;
 
-Human::Human(uint32_t px, uint32_t py, Random *random)
+Human::Human(uint32_t px, uint32_t py, uint32_t infectionProbability,Random *random)
 {
     this->px = px;
     this->py = py;
+    this->infectionProbability = infectionProbability;
     this->random = random;
     this->setRandDirection(); //Set random direction
     numHumans++;
@@ -71,7 +72,7 @@ void Human::infect()
     }
 
     uint32_t chance = random->randInt(100);
-    if (chance <= 5) //5% chance to infect
+    if (chance <= infectionProbability) //Chance to infect
     {
         infected = true;
         numInfected++;

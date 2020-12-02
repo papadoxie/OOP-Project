@@ -3,8 +3,8 @@
 
 Simulator::Simulator()
 {
-    WIDTH = 640;
-    HEIGHT = 480;
+    WIDTH = 800;
+    HEIGHT = 600;
     Screen = NULL;
     screenSurface = NULL;
     virusSimulation = NULL;
@@ -33,7 +33,11 @@ int Simulator::onExecute()
             {
                 return -1;
             }
-            virusSimulation = new Simulation(screenSurface->w, screenSurface->h);
+            //Create instance of simulation
+            virusSimulation = new Simulation(screenSurface->w,
+                                             screenSurface->h,
+                                             numPeople,
+                                             infectionProbability);
         }
 
         while (simRunning) //Loop Until Exit Call

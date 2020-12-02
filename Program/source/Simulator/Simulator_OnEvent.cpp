@@ -20,7 +20,7 @@ void Simulator::onEvent(SDL_Event *Event)
     if (Event->type == SDL_KEYDOWN) { //Exit when ESCAPE is pressed
         if(SDL_GetKeyboardState(NULL)[SDL_SCANCODE_SPACE]){
             simRunning = false;
-            std::cout << "STOPPED SIMULATION\n";
+            std::cout << "\nSTOPPED SIMULATION\n";
         }
     }
 

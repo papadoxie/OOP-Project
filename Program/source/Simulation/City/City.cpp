@@ -1,8 +1,9 @@
 #include "../../../include/Simulation/City/City.h"
 #include <iterator>
 
-City::City(uint32_t width, uint32_t height)
-{
+City::City(uint32_t width, uint32_t height, uint32_t infectionProbabiliy)
+{   
+    this->infectionProbability = infectionProbability;
     humans.clear();
     setDimensions(width, height); //Set dimensions of the City
     initWalls();
@@ -72,7 +73,7 @@ void City::populate(uint32_t numP)
 
         if ((isLocOpen(hx, hy)))
         {
-            humans.push_back(Human(hx, hy, &random));
+            humans.push_back(Human(hx, hy, infectionProbability, &random));
             i++;
         }
     }

@@ -4,7 +4,7 @@
 bool Simulator::onInit()
 {   
     //Resource Log
-    std::cout << "Platform: " << SDL_GetPlatform() << "\n";
+    std::cout << "\nPlatform: " << SDL_GetPlatform() << "\n";
     std::cout << "System Resources" << "\n";
     std::cout << "RAM: " << SDL_GetSystemRAM() << " MB" << "\n\n";
 

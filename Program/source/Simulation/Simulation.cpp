@@ -2,11 +2,14 @@
 #include "../../include/FileHandling/FileHandler.h"
 #include <iostream>
 
-Simulation::Simulation(uint32_t width, uint32_t height) : City(width, height)
+Simulation::Simulation(uint32_t width,
+                       uint32_t height,
+                       uint32_t numPeople,
+                       uint32_t infectionProbability) : City(width, height, infectionProbability)
 {
     std::cout << "TIME: " << (uint32_t)time.getCurTime() << "s\n";
     randomBuildings(40);
-    populate(250);
+    populate(numPeople);
 }
 
 void Simulation::draw(uint32_t *pixels)
@@ -15,7 +18,8 @@ void Simulation::draw(uint32_t *pixels)
     drawHumans(pixels);
 }
 
-void Simulation::update(uint32_t *pixels){
+void Simulation::update(uint32_t *pixels)
+{
     simTime();
     City::update();
     draw(pixels);
@@ -55,7 +59,7 @@ void Simulation::drawHumans(uint32_t *pixels)
                     {
                         if (j < height)
                         {
-                            pixels[i + (j * width)] = colors.RED;
+                            pixels[i + (j * width)] = colors.PURPLE;
                         }
                     }
                 }
@@ -90,7 +94,8 @@ void Simulation::simTime()
     }
 }
 
-void Simulation::end(){
+void Simulation::end()
+{
     std::cout << "\nSIMULATION RAN FOR: " << time.getCurTime() << "s\n"
               << "TOTAL HUMANS: " << humans.at(0).getNumHumans() << "\n"
               << "INFECTED: " << humans.at(0).getInfectedPc() << "%\n";
@@ -98,5 +103,6 @@ void Simulation::end(){
     FileHandler handler(this);
 }
 
-Simulation::~Simulation(){
+Simulation::~Simulation()
+{
 }

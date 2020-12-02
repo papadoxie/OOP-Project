@@ -21,6 +21,10 @@ private:
     bool Running;    //Is program running
     bool simRunning; //Is a simulation running
 
+    //Simulation arguments
+    uint32_t infectionProbability;
+    uint32_t numPeople;
+
     Simulation *virusSimulation; //Instance of a simulation
     SDL_Window *Screen;          //Output window
     SDL_Surface *screenSurface;  //Surface to draw on on screen
