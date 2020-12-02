@@ -2,8 +2,8 @@
 #include <SDL2/SDL.h>
 #include <stdint.h>
 #include "../FileHandling/FileHandler.h"
-#include "../../include/Simulation/Simulation.h"
-#include "../../include/Simulator/Colors.h"
+#include "../Simulation/Simulation.h"
+#include "Colors.h"
 
 class Simulator
 {

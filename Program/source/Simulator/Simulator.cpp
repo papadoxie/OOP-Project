@@ -55,10 +55,3 @@ int Simulator::onExecute()
 
     return 0;
 }
-
-int main(int argc, char *argv[]) //Main Function
-{
-    Simulator virusSimulator; //Create instance of Simulator
-
-    return virusSimulator.onExecute(); //Run the simulation
-}

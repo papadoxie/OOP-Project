@@ -1,8 +1,8 @@
 #!/bin/bash
 
-g++ ./source/Simulator/Simulator.cpp \
--Wall -lSDL2 -lncurses -fdiagnostics-color=always \
+g++ main.cpp \
 -o ./bin/VirusSimulator \
+./source/Simulator/Simulator.cpp \
 ./source/Simulator/Simulator_Menu.cpp \
 ./source/Simulator/Simulator_OnCleanup.cpp \
 ./source/Simulator/Simulator_OnEvent.cpp \
@@ -14,4 +14,5 @@ g++ ./source/Simulator/Simulator.cpp \
 ./source/FileHandling/FileHandler.cpp \
 ./source/Simulation/Human/Human.cpp \
 ./source/Helpers/Random.cpp \
-./source/Helpers/Time.cpp
+./source/Helpers/Time.cpp \
+-Wall -lSDL2 -lncurses -fdiagnostics-color=always
