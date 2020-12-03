@@ -4,10 +4,14 @@
 
 Simulation::Simulation(uint32_t width,
                        uint32_t height,
+                       uint32_t simID,
                        uint32_t numPeople,
-                       uint32_t infectionProbability) : City(width, height, infectionProbability)
+                       uint32_t infectionProbability):
+                       City(width, height, infectionProbability)
 {
+    std::cout << "SIMULATION ID: " << simID << "\n";
     std::cout << "TIME: " << (uint32_t)time.getCurTime() << "s\n";
+    ID = simID;
     randomBuildings(40);
     populate(numPeople);
 }
@@ -41,8 +45,8 @@ void Simulation::drawWalls(uint32_t *pixels)
 
 void Simulation::drawHumans(uint32_t *pixels)
 {
-    uint32_t hw = 3 * width / 640;  //Size according to width
-    uint32_t hh = 3 * height / 480; //Size according to height
+    uint32_t hw = 3 * width / 800;  //Size according to width
+    uint32_t hh = 3 * height / 600; //Size according to height
 
     for (Human &h : humans)
     {
@@ -95,14 +99,15 @@ void Simulation::simTime()
 }
 
 void Simulation::end()
-{
-    std::cout << "\nSIMULATION RAN FOR: " << time.getCurTime() << "s\n"
-              << "TOTAL HUMANS: " << humans.at(0).getNumHumans() << "\n"
-              << "INFECTED: " << humans.at(0).getInfectedPc() << "%\n";
+{   
+    uint32_t endTime = time.getCurTime();
+    uint32_t numHumans = humans.at(0).getNumHumans();
+    double_t infectedPc = humans.at(0).getInfectedPc();
 
-    FileHandler handler(this);
-}
+    std::cout << "\nSIMULATION RAN FOR: " << endTime << "s\n"
+              << "TOTAL HUMANS: " << numHumans << "\n"
+              << "INFECTED: " << infectedPc << "%\n";
 
-Simulation::~Simulation()
-{
+    FileHandler handler;
+    handler.log(ID, endTime, numHumans, infectedPc);
 }

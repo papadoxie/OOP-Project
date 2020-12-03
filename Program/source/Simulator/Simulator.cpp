@@ -36,6 +36,7 @@ int Simulator::onExecute()
             //Create instance of simulation
             virusSimulation = new Simulation(screenSurface->w,
                                              screenSurface->h,
+                                             f_handle.getNumberOfLogs(),
                                              numPeople,
                                              infectionProbability);
         }

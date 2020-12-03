@@ -8,10 +8,11 @@ void Simulator::menu()
 
     std::cout << "\nMENU\n"
               << "1. START SIMULATION\n"
-              << "2. GET AVERAGE OF PREVIOUS SIMULATIONS\n"
-              << "3. GET A SIMULATION RECORD BY INDEX\n"
-              << "4. REMOVE A SIMULATION RECORD BY INDEX\n"
-              << "5. EXIT\n\n"
+              << "2. PRINT LOG FILE\n"
+              << "3. GET AVERAGE OF PREVIOUS SIMULATIONS\n"
+              << "4. GET A SIMULATION RECORD BY INDEX\n"
+              << "5. REMOVE A SIMULATION RECORD BY INDEX\n"
+              << "Q. EXIT\n\n"
               << ">> ";
 
     std::cin >> input;
@@ -19,19 +20,23 @@ void Simulator::menu()
     switch (input)
     {
     case '1': //Start a simulation
-        do
+        do    //Infection probability should be between 1% to 100%
         {
             std::cout << "\nENTER INFECTION PROBABILITY (1-100)\n>> ";
             std::cin >> infectionProbability;
         } while (infectionProbability < 1 || infectionProbability > 100);
 
-        std::cout << "\nENTER POPULATION SIZE\n>> ";
-        std::cin >> numPeople;
+        do //Population size greater than 5000 lags too much
+        {
+            std::cout << "\nENTER POPULATION SIZE (1-10000)\n>> ";
+            std::cin >> numPeople;
+        } while (numPeople < 1 || numPeople > 5000);
 
         simRunning = true;
         break;
 
     case '2':
+        f_handle.printAll();
         break;
 
     case '3':
@@ -40,7 +45,10 @@ void Simulator::menu()
     case '4':
         break;
 
-    case '5': //Exit the program
+    case '5':
+        break;
+
+    case 'Q': //Exit the program
         Running = false;
         break;
 

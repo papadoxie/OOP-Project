@@ -5,7 +5,7 @@ void Simulator::onCleanup()
     if (virusSimulation != NULL)
     {
         virusSimulation->end();
-        virusSimulation->~Simulation();
+        delete virusSimulation;
         virusSimulation = NULL;
     }
     SDL_Quit();

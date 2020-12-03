@@ -9,16 +9,17 @@
 class Simulation : private City
 {
 public:
-
     /**
      * Create new simulation
      * @param width width of the city in pixels
      * @param height height of the city pixels
+     * @param simID Unique ID of the current simulation
      * @param numPeople number of people in the city
      * @param infectionProbability probability of a human to get infected
     */
     Simulation(uint32_t width,
                uint32_t height,
+               uint32_t simID,
                uint32_t numPeople,
                uint32_t infectionProbability);
 
@@ -26,9 +27,9 @@ public:
     void update(uint32_t *pixels);
     void simTime();
     void end();    //End the simulation
-    ~Simulation(); //Destructor
 
 private:
+    uint32_t ID;
     Colors colors;
     Time time;
     void drawHumans(uint32_t *pixels);

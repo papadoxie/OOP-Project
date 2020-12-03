@@ -15,4 +15,4 @@ g++ main.cpp \
 ./source/Simulation/Human/Human.cpp \
 ./source/Helpers/Random.cpp \
 ./source/Helpers/Time.cpp \
--Wall -lSDL2 -lncurses -fdiagnostics-color=always
+-Wall -Wfatal-errors -lSDL2 -fdiagnostics-color=always

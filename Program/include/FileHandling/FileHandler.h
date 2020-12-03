@@ -1,17 +1,11 @@
 #pragma once
 
-#include <fstream>
 #include "../Simulation/Simulation.h"
 
 class FileHandler
 {
-
 public:
-    FileHandler(Simulation *sim);
-    void write();
-    void read();
-
-private:
-    Simulation *sim;
-    std::fstream file;
+    uint32_t getNumberOfLogs();
+    void log(uint32_t simID, uint32_t endTime, uint32_t numHumans, double_t infectedPc);
+    void printAll();
 };

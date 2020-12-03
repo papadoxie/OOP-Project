@@ -11,29 +11,33 @@ public:
     Simulator();     //Sets running status and NULLs pointers
     int onExecute(); //Creates event handler and starts infinite loop
 
+private:
+    //Simulation handling
     bool onInit();                  //Initializes the window and surfaces
     void onEvent(SDL_Event *Event); //Handles events
     void onLoop();                  //Stuff to do on each loop
     void onRender();                //Render results of loop
     void onCleanup();               //Cleanup routine
 
-private:
+    //Simulation state
     bool Running;    //Is program running
     bool simRunning; //Is a simulation running
 
     //Simulation arguments
-    uint32_t infectionProbability;
-    uint32_t numPeople;
+    uint32_t infectionProbability; //Probability of infection spread between humans
+    uint32_t numPeople;            //Number of people in the simulation
+    Simulation *virusSimulation;   //Instance of a simulation
 
-    Simulation *virusSimulation; //Instance of a simulation
-    SDL_Window *Screen;          //Output window
-    SDL_Surface *screenSurface;  //Surface to draw on on screen
+    //GUI Screen
+    SDL_Window *Screen;         //Output window
+    SDL_Surface *screenSurface; //Surface to draw on on screen
+    uint32_t WIDTH;             //Screen width
+    uint32_t HEIGHT;            //Screen height
+    uint32_t *pixbuf;           //Pixel buffer
+    Colors colors;              //Colors to be used on screen
 
-    void menu(); //Menu
+    //FileHandling
+    FileHandler f_handle;
 
-    uint32_t WIDTH;  //Screen width
-    uint32_t HEIGHT; //Screen height
-
-    uint32_t *pixbuf; //Pixel buffer
-    Colors colors;
+    void menu(); //CLI Menu
 };
