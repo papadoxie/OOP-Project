@@ -28,7 +28,7 @@ void Simulator::menu()
 
         do //Population size greater than 5000 lags too much
         {
-            std::cout << "\nENTER POPULATION SIZE (1-10000)\n>> ";
+            std::cout << "\nENTER POPULATION SIZE (1-5000)\n>> ";
             std::cin >> numPeople;
         } while (numPeople < 1 || numPeople > 5000);
 
@@ -40,12 +40,15 @@ void Simulator::menu()
         break;
 
     case '3':
+        f_handle.printAverage();
         break;
 
     case '4':
+        f_handle.printRecord();
         break;
 
     case '5':
+        f_handle.deleteRecord();
         break;
 
     case 'Q': //Exit the program

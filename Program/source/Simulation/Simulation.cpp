@@ -6,8 +6,7 @@ Simulation::Simulation(uint32_t width,
                        uint32_t height,
                        uint32_t simID,
                        uint32_t numPeople,
-                       uint32_t infectionProbability):
-                       City(width, height, infectionProbability)
+                       uint32_t infectionProbability) : City(width, height, infectionProbability)
 {
     std::cout << "SIMULATION ID: " << simID << "\n";
     std::cout << "TIME: " << (uint32_t)time.getCurTime() << "s\n";
@@ -22,11 +21,18 @@ void Simulation::draw(uint32_t *pixels)
     drawHumans(pixels);
 }
 
-void Simulation::update(uint32_t *pixels)
+bool Simulation::update(uint32_t *pixels)
 {
     simTime();
     City::update();
     draw(pixels);
+
+    if (humans.at(0).getInfectedPc() == 100)
+    {
+        return 1;
+    }
+
+    return 0;
 }
 
 void Simulation::drawWalls(uint32_t *pixels)
@@ -99,7 +105,7 @@ void Simulation::simTime()
 }
 
 void Simulation::end()
-{   
+{
     uint32_t endTime = time.getCurTime();
     uint32_t numHumans = humans.at(0).getNumHumans();
     double_t infectedPc = humans.at(0).getInfectedPc();

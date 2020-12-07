@@ -24,7 +24,7 @@ public:
                uint32_t infectionProbability);
 
     void draw(uint32_t *pixels);
-    void update(uint32_t *pixels);
+    bool update(uint32_t *pixels);
     void simTime();
     void end();    //End the simulation
 

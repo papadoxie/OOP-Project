@@ -1,7 +1,12 @@
 #include "../../include/Simulator/Simulator.h"
 #include <iostream>
 
-void Simulator::onLoop(){
+void Simulator::onLoop()
+{
     SDL_FillRect(screenSurface, NULL, colors.BLACK);
-    virusSimulation->update(pixbuf);
+    if (virusSimulation->update(pixbuf))
+    {
+        simRunning = false;
+        std::cout << "\nSTOPPED SIMULATION\n";
+    }
 }
