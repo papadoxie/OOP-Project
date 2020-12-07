@@ -60,7 +60,7 @@ jobs:
     #    uses a compiled language
 
     - run: |
-       apt update && apt install lsdl2-dev -y
+       sudo apt update && apt install lsdl2-dev -y
        cd Program
        ./compile.sh
 
