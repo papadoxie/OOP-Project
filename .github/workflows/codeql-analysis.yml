@@ -60,7 +60,8 @@ jobs:
     #    uses a compiled language
 
     - run: |
-       Program/compile.sh
+       cd Program
+       compile.sh
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
