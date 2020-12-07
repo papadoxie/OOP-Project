@@ -1,9 +1,13 @@
 # OOP-Project BCSF19A515
 
 
-## Virus Simulator
+# Virus Simulator
 Simulates the spreading of virus in a given population according to infection rate
 
+## Releases
+Latest release can be found [here](https://github.com/PAPADOXIE/OOP-Project/releases/tag/v0.1.0-alpha) 
+
+## Building From Source
 ### Compilation
 Install Dependencies
 ```sh
