@@ -8,5 +8,6 @@ void Simulator::onCleanup()
         delete virusSimulation;
         virusSimulation = NULL;
     }
+    f_handle.logtxt();
     SDL_Quit();
 }

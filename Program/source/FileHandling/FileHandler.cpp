@@ -242,7 +242,7 @@ void FileHandler::deleteRecord()
 
     while (true)
     {
-        auto position = file.tellg();
+        std::streampos position = file.tellg();
 
         file.read(reinterpret_cast<char *>(&simID), sizeof(uint32_t));
         file.read(reinterpret_cast<char *>(&endTime), sizeof(uint32_t));
@@ -266,6 +266,68 @@ void FileHandler::deleteRecord()
 
     std::cout << "SIMULATION RECORD NOT FOUND\n";
     file.close();
+}
+
+void FileHandler::logtxt()
+{
+
+    std::fstream binFile;
+    std::fstream txtFile;
+    uint32_t simID;
+    uint32_t endTime;
+    double_t infectedPc;
+
+    binFile.open("./bin/Simulation.log", std::fstream::binary |
+                                             std::fstream::in);
+
+    txtFile.open("./bin/Simulation.txt", std::fstream::out);
+
+    if (catchException(&binFile) || catchException(&txtFile))
+    {
+        return;
+    }
+
+    txtFile << "---------------------------------\n"
+            << "| "
+            << " # "
+            << " | "
+            << " Time "
+            << " | "
+            << "  % Infected  "
+            << " | "
+            << "\n"
+            << "---------------------------------\n";
+
+    while (true)
+    {
+        binFile.read(reinterpret_cast<char *>(&simID), sizeof(uint32_t));
+        binFile.read(reinterpret_cast<char *>(&endTime), sizeof(uint32_t));
+        binFile.read(reinterpret_cast<char *>(&infectedPc), sizeof(double_t));
+
+        if (binFile.eof())
+        {
+            break;
+        }
+
+        if (simID == 1330380800)
+        {
+            continue;
+        }
+
+        txtFile << "| "
+                  << std::setw(3) << std::right << simID
+                  << " | "
+                  << std::setw(6) << std::right << endTime
+                  << " | "
+                  << std::setw(14) << std::right << infectedPc
+                  << " | "
+                  << "\n";
+    }
+
+    txtFile << "---------------------------------\n";
+
+    binFile.close();
+    txtFile.close();
 }
 
 bool FileHandler::catchException(std::fstream *file)
