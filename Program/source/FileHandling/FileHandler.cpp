@@ -8,9 +8,8 @@ uint32_t FileHandler::getNumberOfLogs()
     std::fstream file;
     uint32_t numLogs;
     uint32_t simID;
-
-    //Dummy input
-    u_long dummy;
+    uint32_t endTime;
+    double_t infectedPc;
 
     file.open("./bin/Simulation.log", std::fstream::binary |
                                           std::fstream::in);
@@ -22,9 +21,8 @@ uint32_t FileHandler::getNumberOfLogs()
 
     while (!file.eof())
     {
-        file.read(reinterpret_cast<char *>(&numLogs), sizeof(uint32_t));
-        file.read(reinterpret_cast<char *>(&dummy), (sizeof(uint32_t) + sizeof(double_t)));
-        if (numLogs != 1330380800)
+        read(&file, numLogs, endTime, infectedPc);
+        if (numLogs != 791543808)
         {
             simID = numLogs;
         }
@@ -46,9 +44,7 @@ void FileHandler::log(uint32_t simID, uint32_t endTime, uint32_t numHumans, doub
         return;
     }
 
-    file.write(reinterpret_cast<char *>(&simID), sizeof(uint32_t));
-    file.write(reinterpret_cast<char *>(&endTime), sizeof(uint32_t));
-    file.write(reinterpret_cast<char *>(&infectedPc), sizeof(double_t));
+    write(&file, simID, endTime, infectedPc);
 
     file.close();
 }
@@ -80,16 +76,14 @@ void FileHandler::printAll()
 
     while (true)
     {
-        file.read(reinterpret_cast<char *>(&simID), sizeof(uint32_t));
-        file.read(reinterpret_cast<char *>(&endTime), sizeof(uint32_t));
-        file.read(reinterpret_cast<char *>(&infectedPc), sizeof(double_t));
+        read(&file, simID, endTime, infectedPc);
 
         if (file.eof())
         {
             break;
         }
 
-        if (simID == 1330380800)
+        if (simID == 791543808)
         {
             continue;
         }
@@ -126,16 +120,14 @@ void FileHandler::printAverage()
 
     while (true)
     {
-        file.read(reinterpret_cast<char *>(&simID), sizeof(uint32_t));
-        file.read(reinterpret_cast<char *>(&endTime), sizeof(uint32_t));
-        file.read(reinterpret_cast<char *>(&infectedPc), sizeof(double_t));
+        read(&file, simID, endTime, infectedPc);
 
         if (file.eof())
         {
             break;
         }
 
-        if (simID == 1330380800)
+        if (simID == 791543808)
         {
             continue;
         }
@@ -174,16 +166,14 @@ void FileHandler::printRecord()
 
     while (true)
     {
-        file.read(reinterpret_cast<char *>(&simID), sizeof(uint32_t));
-        file.read(reinterpret_cast<char *>(&endTime), sizeof(uint32_t));
-        file.read(reinterpret_cast<char *>(&infectedPc), sizeof(double_t));
+        read(&file, simID, endTime, infectedPc);
 
         if (file.eof())
         {
             break;
         }
 
-        if (simID == 1330380800)
+        if (simID == 791543808)
         {
             continue;
         }
@@ -244,9 +234,7 @@ void FileHandler::deleteRecord()
     {
         std::streampos position = file.tellg();
 
-        file.read(reinterpret_cast<char *>(&simID), sizeof(uint32_t));
-        file.read(reinterpret_cast<char *>(&endTime), sizeof(uint32_t));
-        file.read(reinterpret_cast<char *>(&infectedPc), sizeof(double_t));
+        read(&file, simID, endTime, infectedPc);
 
         if (file.eof())
         {
@@ -300,28 +288,26 @@ void FileHandler::logtxt()
 
     while (true)
     {
-        binFile.read(reinterpret_cast<char *>(&simID), sizeof(uint32_t));
-        binFile.read(reinterpret_cast<char *>(&endTime), sizeof(uint32_t));
-        binFile.read(reinterpret_cast<char *>(&infectedPc), sizeof(double_t));
+        read(&binFile, simID, endTime, infectedPc);
 
         if (binFile.eof())
         {
             break;
         }
 
-        if (simID == 1330380800)
+        if (simID == 791543808)
         {
             continue;
         }
 
         txtFile << "| "
-                  << std::setw(3) << std::right << simID
-                  << " | "
-                  << std::setw(6) << std::right << endTime
-                  << " | "
-                  << std::setw(14) << std::right << infectedPc
-                  << " | "
-                  << "\n";
+                << std::setw(3) << std::right << simID
+                << " | "
+                << std::setw(6) << std::right << endTime
+                << " | "
+                << std::setw(14) << std::right << infectedPc
+                << " | "
+                << "\n";
     }
 
     txtFile << "---------------------------------\n";
@@ -338,4 +324,18 @@ bool FileHandler::catchException(std::fstream *file)
         return true;
     }
     return false;
+}
+
+void FileHandler::write(std::fstream *file, uint32_t simID, uint32_t endTime, double_t infectedPc)
+{
+    file->write(reinterpret_cast<char *>(&simID), sizeof(uint32_t));
+    file->write(reinterpret_cast<char *>(&endTime), sizeof(uint32_t));
+    file->write(reinterpret_cast<char *>(&infectedPc), sizeof(double_t));
+}
+
+void FileHandler::read(std::fstream *file, uint32_t &simID, uint32_t &endTime, double_t &infectedPc)
+{
+    file->read(reinterpret_cast<char *>(&simID), sizeof(uint32_t));
+    file->read(reinterpret_cast<char *>(&endTime), sizeof(uint32_t));
+    file->read(reinterpret_cast<char *>(&infectedPc), sizeof(double_t));
 }
