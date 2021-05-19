@@ -16,7 +16,7 @@ Install Dependencies
 
 In the ./Program folder
 ```sh
-    sudo chmod +x compile.sh
+    chmod +x compile.sh
     ./compile.sh
 ```
 
